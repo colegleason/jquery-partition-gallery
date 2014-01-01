@@ -13,4 +13,4 @@ Example
         if ((++loaded) === length)
           $("#gallery").partitionGallery(images);
      });
-  });
+    });

@@ -1,4 +1,6 @@
 (function($) {
+    // Port of original code from:
+    // http://www.crispymtn.com/stories/the-algorithm-for-a-perfectly-balanced-photo-gallery
     $.fn.partitionGallery = function(images) {
         images = $.makeArray(images);
         var container_width = this.width();
@@ -50,6 +52,7 @@
 
     // Linear partition
     // Partitions a sequence of non-negative integers into k ranges
+    // Port of https://github.com/crispymtn/linear-partition
     // Based on Óscar López implementation in Python (http://stackoverflow.com/a/7942946)
     // Also see http://www8.cs.umu.se/kurser/TDBAfl/VT06/algorithms/BOOK/BOOK2/NODE45.HTM
     // Dependencies: UnderscoreJS (http://www.underscorejs.org)
@@ -91,6 +94,7 @@
         return [seq.slice(0, n+1)].concat(ans);
     }
 
+    // Returns a range of numbers, similar to Python's range()
     function range(start, stop) {
         var ans = [];
         for(var i = start; i < stop; i++) {
@@ -99,6 +103,8 @@
         return ans;
     }
 
+    // Returns the minimum in a list using an iterator to retreive the value.
+    // Based on http://underscorejs.org/docs/underscore.html#section-28
     function min(items, iterator) {
         var result = {computed: Infinity, value: Infinity};
         items.forEach(function(item) {
@@ -108,6 +114,8 @@
         return result.computed;
     }
 
+    // Returns the maximum in a list using an iterator to retreive the value.
+    // Based on http://underscorejs.org/docs/underscore.html#section-27
     function max(items, iterator) {
         var result = {computed: -Infinity, value: -Infinity};
         items.forEach(function(item) {
@@ -117,6 +125,7 @@
         return result.computed;
     }
 
+    // Creates a 2D matrix filled with initial value
     function initMatrix(height, width, value) {
         var matrix = Array(width);
         for(var i = 0; i < width; i++) {
